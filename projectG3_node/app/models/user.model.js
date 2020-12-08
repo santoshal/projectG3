@@ -8,15 +8,16 @@ module.exports = (sequelize, Sequelize) => {
       },
       password: {
         type: Sequelize.STRING
-      },
-      roleid :{
-          type:Sequelize.INTEGER,
-          allowNull:false,
-          references:{
-              model:'roles',
-              key:'id'
-          }
       }
+      // ,
+      // roleid :{
+      //     type:Sequelize.INTEGER,
+      //     allowNull:false,
+      //     references:{
+      //         model:'roles',
+      //         key:'id'
+      //     }
+      // }
 
     },
     

@@ -3,11 +3,13 @@ const { favourite } = require("../models");
 const Tutorial = db.favourite;
 // const ser=db.Sequelize;
 // const { QueryTypes } = require('sequelize');
+
 const Op = db.Sequelize.Op;
 exports.findOne= (req, res) => {
     const id = req.params.id;
     const quid=req.params.qid;
-    Tutorial.findOne({ where: { quizid:quid, userid:id } })
+    Tutorial.findOne({
+        where: { quizeId:quid, userId:id } })
     .then(data => {
       res.send(data);
       console.log(data);
@@ -52,8 +54,8 @@ exports.create = (req, res) => {
  
    // Create a fav
    const tutorial = {
-     quizid: req.body.quizid,
-     userid: req.body.userid,
+     quizeId: req.body.quizid,
+     userId: req.body.userid,
      status: req.body.status
    };
  
@@ -87,39 +89,41 @@ exports.create = (req, res) => {
 //       });
 // };
 
-exports.findAll = (req, res) => {
-    const id = req.params.id;
-    console.log(id);
+// exports.findAll = (req, res) => {
+//     const id = req.params.id;
+//     console.log(id);
 
 
-joinquery =db.sequelize.query('SELECT quizname from quizes,favourites where quizes.id=favourites.quizid and favourites.status=true and favourites.userid='+id, {
-        //replacements: {ids: carIds, createdDate: currentDateMonth},
-         model: db.quize,
-         mapToModel: true
-       }).then((data)=>{
-           console.log(data);
-           res.send(data);
+// joinquery =db.sequelize.query('SELECT quizname from quizes,favourites where quizes.id=favourites.quizid and favourites.status=true and favourites.userid='+id, {
+//         //replacements: {ids: carIds, createdDate: currentDateMonth},
+//          model: db.quize,
+//          mapToModel: true
+//        }).then((data)=>{
+//            console.log(data);
+//            res.send(data);
 
-       });
-       console.log(joinquery);
-       
+//        });
+//        console.log(joinquery);
+
+// }   
 
 
-}   
-   // sequelize.query("SELECT quizname from quizes,favourites where quizes.id=favourites.quizid and favourites.status=true and favourites.userid="+id,{ type: QueryTypes.SELECT }).success((rows)=>{
-    
-//    res.send(rows);
-//     console.log(rows);
- 
-
-// favourites.hasMany(Post, {foreignKey: 'quizid'})
-// Post.belongsTo(U, {foreignKey: 'user_id'})
-
-// exports.findAll({
-//     include: [{
-//       model: User,
-//       where: {year_birth: 1984}
-//      }]
-//   }).then(posts => {
-//     /* ... */
-//   });
+exports.findAll=(req,res) => {
+    const id=req.params.id;
+    console.log("ds");
+    return Tutorial.findAll({
+      include: ["quizs"],
+      where: {userid:id,status:true}
+    } ).then(data => {
+        res.send(data);
+        console.log(data);
+        
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+      });
+  };
+  

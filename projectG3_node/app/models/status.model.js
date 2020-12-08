@@ -6,24 +6,25 @@ module.exports = (sequelize, Sequelize) => {
 
           remainingtime: {
             type: Sequelize.TIME
-          },
+          }
+    //       ,
       
-      questionid :{
-        type:Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-            model:'questions',
-            key:'id'
-        }
-    },
-    userid :{
-        type:Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-            model:'users',
-            key:'id'
-        }
-    }
+    //   questionid :{
+    //     type:Sequelize.INTEGER,
+    //     allowNull:false,
+    //     references:{
+    //         model:'questions',
+    //         key:'id'
+    //     }
+    // },
+    // userid :{
+    //     type:Sequelize.INTEGER,
+    //     allowNull:false,
+    //     references:{
+    //         model:'users',
+    //         key:'id'
+    //     }
+    // }
       
       
     },

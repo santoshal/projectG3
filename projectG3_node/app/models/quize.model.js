@@ -8,15 +8,16 @@ module.exports = (sequelize, Sequelize) => {
       },
       count:{
         type: Sequelize.INTEGER
-      },
-      categoryid :{
-        type:Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-            model:'categories',
-            key:'id'
-        }
-    }
+      }
+    //   ,
+    //   categoryid :{
+    //     type:Sequelize.INTEGER,
+    //     allowNull:false,
+    //     references:{
+    //         model:'categories',
+    //         key:'id'
+    //     }
+    // }
       
       
     },
