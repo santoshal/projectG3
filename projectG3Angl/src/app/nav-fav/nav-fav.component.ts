@@ -9,6 +9,7 @@ import { AddtoFavService } from '../addto-fav.service';
 export class NavFavComponent implements OnInit {
 uid:number=2;
 myfavlist:any;
+msg:any="";
   constructor(private serv:AddtoFavService) { }
 
   ngOnInit(): void {}
@@ -16,6 +17,7 @@ myfavlist:any;
   getFavList(){
     this.serv.getMyFavlist(this.uid).subscribe((res: any) => {
       this.myfavlist=res;
+    
       console.log(this.myfavlist);
       
     })

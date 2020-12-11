@@ -1,7 +1,7 @@
 <p>nav-fav works!</p>
 
 <button (click)="getFavList()">Favourite</button>
-
+<!-- 
 <div>
 
    <ul>
@@ -9,5 +9,34 @@
         <b> {{a.quizs && a.quizs.quizname}} </b>           
      </li>
    </ul>
-</div>
+</div> -->
 
+<div class="container">
+   <table class="table"> 
+     <thead>
+       <tr>
+         <th>Quiz Name</th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let a of myfavlist">
+         <td>{{a.quizs && a.quizs.quizname}}</td>
+         <!-- <td><button mat-icon-button (click)="toggleSelected()">
+            <mat-icon
+            *ngIf="selected"
+            aria-label="Example icon-button with a heart icon">
+            favorite
+          </mat-icon>
+          <mat-icon
+          *ngIf="!selected"
+          aria-label="Example icon-button with a heart icon">
+          favorite_border
+        </mat-icon>
+        
+        </button></td> -->
+       </tr>      
+     </tbody>
+   </table>
+   
+ </div>
